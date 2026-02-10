@@ -16,26 +16,57 @@ const game = new Phaser.Game(config);
 
 function preload() {
     this.load.image('player', 'assets/player.png');
-    this.load.image('door', 'assets/door.png');
+    this.load.image('door', 'assets/door.png'); // Keeping generic door for ground/platforms if needed, or replace
     this.load.image('button', 'assets/button.png');
+    this.load.image('lava', 'assets/lava.png');
+    this.load.image('water', 'assets/water.png');
+    this.load.image('door_red', 'assets/door_red.png');
+    this.load.image('door_blue', 'assets/door_blue.png');
 }
 
 function create() {
     // 1. Create Environment
     this.platforms = this.physics.add.staticGroup();
 
-    // Ground
-    this.platforms.create(400, 568, 'door').setScale(30, 1).setTint(0x00aa00).refreshBody();
+    // --- FLOORS & WALLS ---
+    // Main Ground Floor
+    this.platforms.create(400, 580, 'door').setScale(30, 1.5).setTint(0x654321).refreshBody();
 
-    // Ledges
-    this.platforms.create(600, 400, 'door').setScale(5, 0.5).setTint(0x00aa00).refreshBody();
-    this.platforms.create(50, 250, 'door').setScale(3, 0.5).setTint(0x00aa00).refreshBody();
-    this.platforms.create(750, 220, 'door').setScale(3, 0.5).setTint(0x00aa00).refreshBody();
+    // Left Wall (Keeps players in bounds)
+    this.platforms.create(0, 300, 'door').setScale(1, 20).setTint(0x654321).refreshBody();
 
-    // Objects
-    this.door = this.physics.add.sprite(700, 330, 'door');
-    this.button = this.physics.add.sprite(400, 530, 'button');
+    // Right Wall
+    this.platforms.create(800, 300, 'door').setScale(1, 20).setTint(0x654321).refreshBody();
 
+    // --- PLATFORMS ---
+    // 1. Low hop (Center)
+    this.platforms.create(400, 480, 'door').setScale(4, 0.5).setTint(0x00aa00).refreshBody();
+
+    // 2. Mid-left ledge
+    this.platforms.create(200, 380, 'door').setScale(4, 0.5).setTint(0x00aa00).refreshBody();
+
+    // 3. High-left ledge (The Button Perch)
+    this.platforms.create(100, 250, 'door').setScale(5, 0.5).setTint(0x00aa00).refreshBody();
+
+    // 4. The "Bridge" to the Door (Right side)
+    this.platforms.create(650, 400, 'door').setScale(8, 0.5).setTint(0x00aa00).refreshBody();
+
+    // --- INTERACTIVE OBJECTS ---
+    // The Goal Door (Blocks the path on the right bridge)
+    // We place it at x=600 so you have to walk past it to "win"
+    // Platform is at y=400. Door needs to be on top of it.
+    this.door = this.physics.add.sprite(552, 193, 'door');
+    this.door.setScale(2, 6); // Make it a tall wall/barrier
+    this.door.setImmovable(true);
+    this.door.body.allowGravity = false;
+
+    this.door = this.physics.add.sprite(552, 193, 'door');
+
+    // The Button (Placed high up on the left ledge)
+    this.button = this.physics.add.sprite(100, 210, 'button');
+    this.button.body.allowGravity = false;
+
+    // Physics Colliders
     this.physics.add.collider(this.door, this.platforms);
     this.physics.add.collider(this.button, this.platforms);
 
@@ -46,6 +77,7 @@ function create() {
     this.player1.setBounce(0.2);
     this.player1.setCollideWorldBounds(true);
     this.physics.add.collider(this.player1, this.platforms);
+    this.physics.add.collider(this.player1, this.door);
 
     // Player 2 (Blue)
     this.player2 = this.physics.add.sprite(200, 450, 'player');
@@ -53,6 +85,7 @@ function create() {
     this.player2.setBounce(0.2);
     this.player2.setCollideWorldBounds(true);
     this.physics.add.collider(this.player2, this.platforms);
+    this.physics.add.collider(this.player2, this.door);
 
     // 3. Controls
     // Player 1: Arrow Keys
@@ -65,6 +98,8 @@ function create() {
         down: Phaser.Input.Keyboard.KeyCodes.S,
         right: Phaser.Input.Keyboard.KeyCodes.D
     });
+
+    this.gameOver = false;
 }
 
 function update() {
@@ -140,10 +175,44 @@ function update() {
     }
 
     // --- INTERACTION ---
-    // Check if EITHER player is hitting the button
+
+    // Button Logic (Opens Door)
     if (this.physics.overlap(this.player1, this.button) || this.physics.overlap(this.player2, this.button)) {
-        this.door.setAlpha(0.3); // Open the door
-    } else {
-        this.door.setAlpha(1); // Close the door (optional, or keep it open)
+        this.tweens.add({
+            targets: this.door,
+            alpha: 0,
+            duration: 500,
+            onComplete: () => {
+                this.door.disableBody(true, true);
+            }
+        });
     }
+
+    // Win Condition (Reach far right)
+    if (!this.gameOver && (this.player1.x > 750 || this.player2.x > 750)) {
+        this.gameOver = true;
+
+        // Display Win Text
+        const winText = this.add.text(400, 300, 'LEVEL COMPLETE!', {
+            fontSize: '64px',
+            fill: '#ffffff',
+            stroke: '#000000',
+            strokeThickness: 6
+        });
+        winText.setOrigin(0.5);
+
+        // Stop physics check (optional, but good for safety)
+        this.physics.pause();
+
+        // Restart level after 3 seconds
+        this.time.delayedCall(3000, () => {
+            this.scene.restart();
+            this.gameOver = false;
+        });
+    }
+}
+
+function respawn(player, x, y) {
+    player.setPosition(x, y);
+    player.body.setVelocity(0, 0);
 }
