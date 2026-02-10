@@ -1,0 +1,79 @@
+{
+    "bounds": {
+        "width": 800,
+        "height": 600
+    },
+    "spawn": {
+        "p1": {
+            "x": 100,
+            "y": 500
+        },
+        "p2": {
+            "x": 200,
+            "y": 500
+        }
+    },
+    "platforms": [
+        {
+            "x": 400,
+            "y": 580,
+            "key": "door",
+            "scaleX": 30,
+            "scaleY": 1.5,
+            "tint": "0x654321"
+        },
+        {
+            "x": 200,
+            "y": 400,
+            "key": "door",
+            "scaleX": 5,
+            "scaleY": 0.5,
+            "tint": "0x00aa00"
+        },
+        {
+            "x": 600,
+            "y": 400,
+            "key": "door",
+            "scaleX": 5,
+            "scaleY": 0.5,
+            "tint": "0x00aa00"
+        },
+        {
+            "x": 400,
+            "y": 250,
+            "key": "door",
+            "scaleX": 5,
+            "scaleY": 0.5,
+            "tint": "0x00aa00"
+        }
+    ],
+    "hazards": [],
+    "doors": [
+        {
+            "id": "finalDoor",
+            "x": 400,
+            "y": 150,
+            "key": "door",
+            "scaleX": 2,
+            "scaleY": 6
+        }
+    ],
+    "buttons": [
+        {
+            "id": "b1",
+            "x": 200,
+            "y": 360,
+            "key": "button",
+            "target": "finalDoor",
+            "logic": "hold"
+        },
+        {
+            "id": "b2",
+            "x": 600,
+            "y": 360,
+            "key": "button",
+            "target": "finalDoor",
+            "logic": "hold"
+        }
+    ]
+}

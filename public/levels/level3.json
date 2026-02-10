@@ -1,0 +1,93 @@
+{
+    "bounds": {
+        "width": 1600,
+        "height": 600
+    },
+    "spawn": {
+        "p1": {
+            "x": 100,
+            "y": 450
+        },
+        "p2": {
+            "x": 150,
+            "y": 450
+        }
+    },
+    "platforms": [
+        {
+            "x": 100,
+            "y": 580,
+            "key": "door",
+            "scaleX": 10,
+            "scaleY": 1.5,
+            "tint": "0x654321"
+        },
+        {
+            "x": 1500,
+            "y": 580,
+            "key": "door",
+            "scaleX": 10,
+            "scaleY": 1.5,
+            "tint": "0x654321"
+        },
+        {
+            "x": 300,
+            "y": 500,
+            "key": "door",
+            "scaleX": 2,
+            "scaleY": 0.5,
+            "tint": "0x00aa00"
+        },
+        {
+            "x": 500,
+            "y": 400,
+            "key": "door",
+            "scaleX": 2,
+            "scaleY": 0.5,
+            "tint": "0x00aa00"
+        },
+        {
+            "x": 700,
+            "y": 500,
+            "key": "door",
+            "scaleX": 2,
+            "scaleY": 0.5,
+            "tint": "0x00aa00"
+        },
+        {
+            "x": 900,
+            "y": 400,
+            "key": "door",
+            "scaleX": 2,
+            "scaleY": 0.5,
+            "tint": "0x00aa00"
+        },
+        {
+            "x": 1100,
+            "y": 500,
+            "key": "door",
+            "scaleX": 2,
+            "scaleY": 0.5,
+            "tint": "0x00aa00"
+        },
+        {
+            "x": 1300,
+            "y": 400,
+            "key": "door",
+            "scaleX": 2,
+            "scaleY": 0.5,
+            "tint": "0x00aa00"
+        }
+    ],
+    "hazards": [
+        {
+            "type": "lava",
+            "x": 800,
+            "y": 590,
+            "scaleX": 60,
+            "scaleY": 1
+        }
+    ],
+    "doors": [],
+    "buttons": []
+}

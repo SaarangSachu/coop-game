@@ -1,0 +1,91 @@
+{
+    "bounds": {
+        "width": 800,
+        "height": 600
+    },
+    "spawn": {
+        "p1": {
+            "x": 50,
+            "y": 450
+        },
+        "p2": {
+            "x": 100,
+            "y": 450
+        }
+    },
+    "platforms": [
+        {
+            "x": 400,
+            "y": 580,
+            "key": "door",
+            "scaleX": 30,
+            "scaleY": 1.5,
+            "tint": "0x654321"
+        },
+        {
+            "x": 400,
+            "y": 400,
+            "key": "door",
+            "scaleX": 30,
+            "scaleY": 1,
+            "tint": "0x654321"
+        },
+        {
+            "x": 400,
+            "y": 200,
+            "key": "door",
+            "scaleX": 30,
+            "scaleY": 1,
+            "tint": "0x654321"
+        }
+    ],
+    "hazards": [],
+    "doors": [
+        {
+            "id": "d1",
+            "x": 200,
+            "y": 300,
+            "key": "door_red",
+            "scaleX": 1,
+            "scaleY": 6,
+            "type": "color",
+            "color": "0xff0000"
+        },
+        {
+            "id": "d2",
+            "x": 600,
+            "y": 300,
+            "key": "door_blue",
+            "scaleX": 1,
+            "scaleY": 6,
+            "type": "color",
+            "color": "0x0000ff"
+        },
+        {
+            "id": "exitGate",
+            "x": 750,
+            "y": 100,
+            "key": "door",
+            "scaleX": 1,
+            "scaleY": 6
+        }
+    ],
+    "buttons": [
+        {
+            "id": "b1",
+            "x": 100,
+            "y": 350,
+            "key": "button",
+            "target": "exitGate",
+            "logic": "and"
+        },
+        {
+            "id": "b2",
+            "x": 700,
+            "y": 350,
+            "key": "button",
+            "target": "exitGate",
+            "logic": "and"
+        }
+    ]
+}

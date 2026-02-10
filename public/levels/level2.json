@@ -1,0 +1,110 @@
+{
+    "bounds": {
+        "width": 800,
+        "height": 1200
+    },
+    "spawn": {
+        "p1": {
+            "x": 100,
+            "y": 1100
+        },
+        "p2": {
+            "x": 200,
+            "y": 1100
+        }
+    },
+    "platforms": [
+        {
+            "x": 400,
+            "y": 1180,
+            "key": "door",
+            "scaleX": 30,
+            "scaleY": 1.5,
+            "tint": "0x654321"
+        },
+        {
+            "x": 400,
+            "y": 1000,
+            "key": "door",
+            "scaleX": 4,
+            "scaleY": 0.5,
+            "tint": "0x00aa00"
+        },
+        {
+            "x": 100,
+            "y": 850,
+            "key": "door",
+            "scaleX": 4,
+            "scaleY": 0.5,
+            "tint": "0x00aa00"
+        },
+        {
+            "x": 700,
+            "y": 850,
+            "key": "door",
+            "scaleX": 4,
+            "scaleY": 0.5,
+            "tint": "0x00aa00"
+        },
+        {
+            "x": 400,
+            "y": 700,
+            "key": "door",
+            "scaleX": 4,
+            "scaleY": 0.5,
+            "tint": "0x00aa00"
+        },
+        {
+            "x": 200,
+            "y": 550,
+            "key": "door",
+            "scaleX": 4,
+            "scaleY": 0.5,
+            "tint": "0x00aa00"
+        },
+        {
+            "x": 600,
+            "y": 550,
+            "key": "door",
+            "scaleX": 4,
+            "scaleY": 0.5,
+            "tint": "0x00aa00"
+        },
+        {
+            "x": 400,
+            "y": 400,
+            "key": "door",
+            "scaleX": 8,
+            "scaleY": 0.5,
+            "tint": "0x00aa00"
+        },
+        {
+            "x": 400,
+            "y": 200,
+            "key": "door",
+            "scaleX": 2,
+            "scaleY": 0.5,
+            "tint": "0x00aa00"
+        }
+    ],
+    "hazards": [],
+    "doors": [
+        {
+            "id": "winDoor",
+            "x": 400,
+            "y": 300,
+            "key": "door",
+            "scaleX": 2,
+            "scaleY": 6
+        }
+    ],
+    "buttons": [
+        {
+            "id": "btnTop",
+            "x": 400,
+            "y": 190,
+            "key": "button",
+            "target": "winDoor"
+        }
+    ]
+}

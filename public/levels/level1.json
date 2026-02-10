@@ -1,0 +1,162 @@
+{
+    "bounds": {
+        "width": 800,
+        "height": 600
+    },
+    "spawn": {
+        "p1": {
+            "x": 100,
+            "y": 450
+        },
+        "p2": {
+            "x": 200,
+            "y": 450
+        }
+    },
+    "platforms": [
+        {
+            "x": 400,
+            "y": 580,
+            "key": "door",
+            "scaleX": 30,
+            "scaleY": 1.5,
+            "tint": "0x654321"
+        },
+        {
+            "x": 0,
+            "y": 300,
+            "key": "door",
+            "scaleX": 1,
+            "scaleY": 20,
+            "tint": "0x654321"
+        },
+        {
+            "x": 800,
+            "y": 300,
+            "key": "door",
+            "scaleX": 1,
+            "scaleY": 20,
+            "tint": "0x654321"
+        },
+        {
+            "x": 400,
+            "y": 480,
+            "key": "door",
+            "scaleX": 4,
+            "scaleY": 0.5,
+            "tint": "0x00aa00"
+        },
+        {
+            "x": 200,
+            "y": 380,
+            "key": "door",
+            "scaleX": 4,
+            "scaleY": 0.5,
+            "tint": "0x00aa00"
+        },
+        {
+            "x": 100,
+            "y": 250,
+            "key": "door",
+            "scaleX": 5,
+            "scaleY": 0.5,
+            "tint": "0x00aa00"
+        },
+        {
+            "x": 650,
+            "y": 400,
+            "key": "door",
+            "scaleX": 8,
+            "scaleY": 0.5,
+            "tint": "0x00aa00"
+        }
+    ],
+    "hazards": [
+        {
+            "type": "lava",
+            "x": 600,
+            "y": 385,
+            "scaleX": 4,
+            "scaleY": 0.5
+        },
+        {
+            "type": "water",
+            "x": 200,
+            "y": 568,
+            "scaleX": 4,
+            "scaleY": 0.5
+        }
+    ],
+    "doors": [
+        {
+            "id": "door1",
+            "x": 552,
+            "y": 193,
+            "key": "door",
+            "scaleX": 2,
+            "scaleY": 6
+        },
+        {
+            "id": "doorRed",
+            "x": 300,
+            "y": 450,
+            "key": "door_red",
+            "scaleX": 1,
+            "scaleY": 4,
+            "type": "color",
+            "color": "0xff0000"
+        },
+        {
+            "id": "doorBlue",
+            "x": 500,
+            "y": 450,
+            "key": "door_blue",
+            "scaleX": 1,
+            "scaleY": 4,
+            "type": "color",
+            "color": "0x0000ff"
+        },
+        {
+            "id": "gateDoor",
+            "x": 700,
+            "y": 300,
+            "key": "door",
+            "scaleX": 1,
+            "scaleY": 4
+        }
+    ],
+    "buttons": [
+        {
+            "id": "btn1",
+            "x": 100,
+            "y": 200,
+            "key": "button",
+            "target": "door1",
+            "logic": "simple"
+        },
+        {
+            "id": "btnGate1",
+            "x": 200,
+            "y": 350,
+            "key": "button",
+            "target": "gateDoor",
+            "logic": "and"
+        },
+        {
+            "id": "btnGate2",
+            "x": 600,
+            "y": 550,
+            "key": "button",
+            "target": "gateDoor",
+            "logic": "and"
+        },
+        {
+            "id": "btnHold",
+            "x": 400,
+            "y": 550,
+            "key": "button",
+            "target": "door1",
+            "logic": "hold"
+        }
+    ]
+}
